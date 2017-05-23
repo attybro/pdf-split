@@ -71,12 +71,12 @@ fi
 echo "SPLIT Started.."
 echo " Generating:"
 while IFS='' read -r line || [[ -n "$line" ]]; do  
-#  if $(pdftk $2 cat $u_start-$u_end output "split_pdf/$line")
-#      then
-#	echo "  $u_counter) $line [OK]"
-#      else
-#	echo "  $u_counter) $line [NOK]"
-#    fi
+  if $(pdftk $2 cat $u_start-$u_end output "split_pdf/$line")
+      then
+	echo "  $u_counter) $line [OK]"
+      else
+	echo "  $u_counter) $line [NOK]"
+    fi
     u_counter=$((u_counter+1))
     u_start=$((u_start+2))
     u_end=$((u_end+2))
